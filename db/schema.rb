@@ -27,14 +27,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_210530) do
     t.index ["round_id"], name: "index_matches_on_round_id"
   end
 
-  create_table "predicts", force: :cascade do |t|
+  create_table "predictions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "match_id", null: false
     t.string "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["match_id"], name: "index_predicts_on_match_id"
-    t.index ["user_id"], name: "index_predicts_on_user_id"
+    t.index ["match_id"], name: "index_predictions_on_match_id"
+    t.index ["user_id"], name: "index_predictions_on_user_id"
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -53,6 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_210530) do
   end
 
   add_foreign_key "matches", "rounds"
-  add_foreign_key "predicts", "matches"
-  add_foreign_key "predicts", "users"
+  add_foreign_key "predictions", "matches"
+  add_foreign_key "predictions", "users"
 end
