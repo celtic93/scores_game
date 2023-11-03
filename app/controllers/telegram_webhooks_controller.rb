@@ -27,6 +27,13 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
     respond_with :message, text: result.message
   end
 
+  def predictions!
+    return respond_with :message, text: 'Нет активного тура' if @round.nil?
+
+    result = Prediction::Presenter.new.show_predictions(@round)
+    respond_with :message, text: result.message
+  end
+
   private
 
   def current_tg_user
