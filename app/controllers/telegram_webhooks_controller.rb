@@ -34,6 +34,13 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
     respond_with :message, text: result.message
   end
 
+  def table!
+    return respond_with :message, text: 'Нет активного тура' if @round.nil?
+
+    result = Table::Presenter.new.calculate_points(@round)
+    respond_with :message, text: result.message
+  end
+
   private
 
   def current_tg_user

@@ -2,6 +2,7 @@
 
 class Round < ApplicationRecord
   has_many :matches, dependent: :destroy
+  has_many :users, -> { distinct }, through: :matches
 
   validates :chat_id, presence: true
 
