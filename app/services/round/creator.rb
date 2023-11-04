@@ -46,7 +46,7 @@ class Round::Creator
 
   def make_matches_list_message
     messages_array.push('Добавлены матчи:')
-    round.matches.each do |match|
+    round.matches.ordered_by_id.each do |match|
       messages_array.push(
         "#{match.date_time.strftime('%d-%m-%Y %H:%M')} #{match.home_team} - #{match.guest_team}"
       )

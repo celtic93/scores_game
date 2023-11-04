@@ -33,6 +33,8 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 
 gem 'open-uri'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 gem 'telegram-bot'
 
 group :development, :test do

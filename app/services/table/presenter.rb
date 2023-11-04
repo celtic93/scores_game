@@ -13,7 +13,7 @@ class Table::Presenter
       table_hash[user.name] = 0
     end
 
-    round.matches.each do |match|
+    round.matches.ordered_by_id.each do |match|
       next if match.result.nil? || match.status.nil?
 
       match.predictions.each do |prediction|

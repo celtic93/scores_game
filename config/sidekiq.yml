@@ -1,0 +1,5 @@
+:scheduler:
+  :schedule:
+    live_results:
+      cron: '0 * * * * *'
+      class: LiveResults

@@ -10,7 +10,7 @@ class Match::Parser
     home_team = page.css('body > div.lstv-grid > main > div.m-teams > a:nth-child(1)')[0]&.text
     guest_team = page.css('body > div.lstv-grid > main > div.m-teams > a:nth-child(3)')[0]&.text
     result = page.css('body > div.lstv-grid > main > div.m-logos > div.m-score > div.m-result')[0]&.text
-    status = page.css('body > div.lstv-grid > main > div.m-logos > div.m-score > div.m-status')[0]&.text
+    status = page.css('body > div.lstv-grid > main > div.m-logos > div.m-score > div.m-status')[0]&.text || (Match::Monitor::MATCH_ENDED_STATUS if page.css('#warning').any?)
 
     Result.new(home_team, guest_team, result, status)
   end

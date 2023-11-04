@@ -5,7 +5,7 @@ class Prediction::Presenter
     result = Result.new
     messages_array = []
 
-    round.matches.each do |match|
+    round.matches.ordered_by_id.each do |match|
       match_array = []
       match_array.push(match.date_time.strftime('%d-%m-%Y %H:%M'))
       match_array.push("#{match.home_team} - #{match.guest_team} #{match.result} #{match.status}")

@@ -24,7 +24,7 @@ class Prediction::Creator
       index, score = prediction.split('.')
       corrected_index = index.to_i - 1
 
-      Prediction.create(user: user, match: round.matches[corrected_index], score: score)
+      Prediction.create(user: user, match: round.matches.ordered_by_id[corrected_index], score: score)
     end
   end
 

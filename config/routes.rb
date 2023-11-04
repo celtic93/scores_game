@@ -3,5 +3,7 @@
 Rails.application.routes.draw do
   telegram_webhook TelegramWebhooksController
 
+  mount Sidekiq::Web => '/sidekiq'
+
   root 'home#index'
 end
