@@ -33,7 +33,7 @@ class Table::Presenter
       end
     end
 
-    table_hash.each do |name, points|
+    table_hash.sort_by {|_key, value| -value }.to_h.each do |name, points|
       messages_array.push("#{name} #{points}")
     end
     result.message = messages_array.join("\n")
