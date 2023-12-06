@@ -15,9 +15,9 @@ class Match::Monitor
     return result if match_is_not_in_progress?
 
     parse_match_score
-    check_score_and_status_changing
+    check_score_and_status_changing if match_has_different_predictions?
     update_match
-    make_message
+    make_message if match_has_different_predictions?
 
     result
   end
@@ -28,6 +28,10 @@ class Match::Monitor
 
   def match_is_not_in_progress?
     Time.zone.now < match.date_time || match.status == MATCH_ENDED_STATUS
+  end
+
+  def match_has_different_predictions?
+    @match_has_different_predictions ||= match.different_predictions?
   end
 
   def parse_match_score
