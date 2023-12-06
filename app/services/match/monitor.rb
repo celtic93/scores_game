@@ -54,7 +54,7 @@ class Match::Monitor
 
   def make_message
     if messages_array.any?
-      messages_array.push("#{match.home_team} - #{match.guest_team}")
+      messages_array.push("#{match.home_team} - #{match.guest_team} (#{match.status})")
       messages_array.push(match.result)
     end
 
